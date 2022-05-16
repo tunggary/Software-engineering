@@ -7241,12 +7241,12 @@
 														"$ref": "AAAAAAGAyGR/pELd9xI="
 													},
 													"font": "Arial;13;0",
-													"left": 34.03466796875,
-													"top": 88,
+													"left": 55.03466796875,
+													"top": 96,
 													"width": 192.9306640625,
 													"height": 13,
-													"alpha": 1.5707958722494422,
-													"distance": 22,
+													"alpha": 0.5880023837674202,
+													"distance": 25.238858928247925,
 													"text": "2 : clickInquireSalesDoneButton()"
 												},
 												{
