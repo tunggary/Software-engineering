@@ -6,8 +6,6 @@ using namespace std;
 /*********************회원가입************************/
 //회원가입 control class
 Signup::Signup() {
-    this->identificationNumber = 0;
-
     // 1. startInterface
     printf("1. SignupUl\n");
     SignupUI signupUI;
@@ -16,34 +14,16 @@ Signup::Signup() {
     signupUI.inputInfo(this);
 
     // 3. printOutput
-    signupUI.printOutput(this);
+    signupUI.printOutput();
 };
 
 //회원가입 control class : addNewClient()
-void Signup::addNewClient(Client* client, string name, string id, string password, int identificationNumber) {
+void Signup::addNewClient(ClientList* client, string name, string id, string password, int identificationNumber) {
     printf("2.1 addNewClient\n");
 
-    //정보저장
-    this->name = name;
-    this->id = id;
-    this->password = password;
-    this->identificationNumber = identificationNumber;
-
-    // 2.1.1 addNewClient
+    // 2.1.1 createClient
     client->createClient(name, id, password, identificationNumber);
 };
-
-//회원가입 control class : getName()
-string Signup::getName() { return this->name; }
-
-//회원가입 control class : getId()
-string Signup::getId() { return this->id; }
-
-//회원가입 control class : getPassword()
-string Signup::getPassword() { return this->password; }
-
-//회원가입 control class : getIdentificationNumber()
-int Signup::getIdentificationNumber() { return this->identificationNumber; }
 
 
 /*********************로그인************************/
@@ -58,28 +38,18 @@ Login::Login() {
     loginUI.inputIdPassword(this);
 
     // 3. printOutput
-    loginUI.printOutput(this);
+    loginUI.printOutput();
 };
 
 //로그인 control class : loginClient()
-string Login::loginClient(Client* client, string id, string password) {
+string Login::loginClient(ClientList* client, string id, string password) {
     printf("2.1 loginClient\n");
-
-    //정보 저장
-    this->id = id;
-    this->password = password;
     
     // 2.1.1 loginClient
     string currentLoginClient =  client->loginClient(id, password);
 
     return currentLoginClient;
 }
-
-//로그인 control class : getId()
-string Login::getId() { return this->id; }
-
-//로그인 control class : getPassword()
-string Login::getPassword() { return this->password; }
 
 
 /*********************로그아웃************************/
@@ -94,23 +64,15 @@ Logout::Logout() {
     logoutUI.clickLogout(this);
 
     // 3. printOutput
-    logoutUI.printOutput(this);
+    logoutUI.printOutput();
 }
 
 //로그아웃 control class : logoutClient()
 string Logout::logoutClient(string id) {
     printf("2.1 logoutClient\n");
 
-    this->id = id;
     return "None";
 }
-
-//로그아웃 control class : getId()
-string Logout::getId() {
-    return this->id;
-}
-
-
 
 /*********************탈퇴하기************************/
 //탈퇴하기 control class
@@ -124,15 +86,12 @@ Secession::Secession() {
     secessionUI.clickSecession(this);
 
     // 3. printOutput
-    secessionUI.printOutput(this);
+    secessionUI.printOutput();
 };
 
 //탈퇴하기 control class : deleteClient()
-string Secession::deleteClient(Client* client, string id) {
+string Secession::deleteClient(ClientList* client, string id) {
     printf("2.1.1 deleteClient\n");
-
-    //정보저장
-    this->id = id;
 
     // 2.1.1.1 deleteClient
     client->deleteClient(id);
@@ -140,5 +99,58 @@ string Secession::deleteClient(Client* client, string id) {
     return "None";
 }
 
-//탈퇴하기 control class : getId()
-string Secession::getId() { return this->id; }
+
+/*********************판매상품등록하기************************/
+
+//판매상품등록하기 control class
+RegisterNewSale::RegisterNewSale() {
+    
+    // 1. startInterface
+    printf("1. RegisterNewSale\n");
+    RegisterNewSaleUI registerNewSaleUI;
+
+    // 2. inputSaleProductinfo
+    registerNewSaleUI.inputSaleProductInfo(this);
+
+    // 3. printOutput
+    registerNewSaleUI.printOutput();
+}
+
+ //판매상품등록하기 control class : registerSaleProduct()
+void RegisterNewSale::registerSaleProduct(ProductList* productList, ClientList* clientList, string sellerId, string productName, string productCompanyName, int price, int remaining) {
+    printf("2.1 registerSaleProduct\n");
+
+    // 2.1.1 getClientDetail
+    Client* client = clientList->getClientDetail(sellerId);
+
+    //새로운 Product 생성
+    Product* product = new Product();
+    product->setSellerId(sellerId);
+    product->setProductName(productName);
+    product->setProductCompanyName(productCompanyName);
+    product->setPrice(price);
+    product->setRemaining(remaining);
+
+
+    // 2.1.2 createProduct
+    productList->createProduct(product);
+
+    // 2.1.3 addSaleProduct
+    client->addSaleProduct(product);
+}
+
+
+/*********************판매통계조회하기************************/
+InquireSaleStats::InquireSaleStats(ClientList* clientList, string sellerId) {
+
+    // 1. getSaleProductStats
+    printf("1. InquireSaleStats\n");
+    StatsDetails* statsDetails = clientList->getSaleProuductStats(sellerId);
+
+    // 2. printOutput()
+    InquireSaleStatsUI inquireSaleStatsUI;
+    inquireSaleStatsUI.printOutput(statsDetails);
+
+    delete[] statsDetails;
+
+}
