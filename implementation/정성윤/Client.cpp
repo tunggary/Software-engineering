@@ -12,17 +12,28 @@ void Client::setIdentificationNumber(int identificationNumber) { this->identific
 void Client::getSaleProduct() {
     saleCollection.getSaleProduct();
 }
+void Client::getPurchaseProduct() {
+    purchaseCollection.getPurchaseProduct();
+}
+
 
 void Client::addSaleProduct(Product* product) {
     printf("2.1.3. addSaleProduct\n");
 
-    // addSaleProduct
+    // 2.1.3. addSaleProduct
     this->saleCollection.addSaleProduct(product);
 };
 
-StatsDetails* Client::getSalePrductStats() {
+ProductDetail* Client::getSalePrductStats() {
     printf("1.1.1. getSaleProuductStats\n");
     
     // 1.1.1.1. getSaleProductStats
     return this->saleCollection.getSalePrductStats();
 }
+
+void Client::addPurchaseProduct(Product* product) {
+    printf("2.1.3. addPurchaseProduct\n");
+
+    // addPurchseProduct
+    this->purchaseCollection.addPurchaseProduct(product);
+};

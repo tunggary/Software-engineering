@@ -5,10 +5,15 @@
 using namespace std;
 
 typedef struct {
-	string productName = "";
+	string sellerId="";
+	string productName="";
+	string productCompanyName="";
+	int price=0;
+	int remaining=0;
+	int saleing=0;
 	int total = 0;
 	float average = 0.0;
-}StatsDetails;
+}ProductDetail;
 
 class Product {
 private:
@@ -45,15 +50,17 @@ public:
 	~ProductList();
 	void createProduct(Product*);
 	void getProductList();
+	Product* getProductDetail(string);
 };
 
-//class Purchase {
-//private:
-//	int purchaseProductNumber;
-//	Product* purchaseProduct[MAX_COUNT];
-//public:
-//	void addP
-//};
+class PurchaseCollection {
+private:
+	int purchaseProductNumber;
+	Product* purchaseProduct[MAX_COUNT];
+public:
+	void addPurchaseProduct(Product*);
+	void getPurchaseProduct();
+};
 
 class SaleCollection {
 private:
@@ -62,7 +69,7 @@ private:
 public:
 	void addSaleProduct(Product*);
 	void getSaleProduct();
-	StatsDetails* getSalePrductStats();
+	ProductDetail* getSalePrductStats();
 };
 
 
@@ -72,7 +79,7 @@ private:
 	string id;
 	string password;
 	int identificationNumber;
-	//Purchase purchaseProductCollection;
+	PurchaseCollection purchaseCollection;
 	SaleCollection saleCollection;
 public:
 	string getName();
@@ -84,8 +91,10 @@ public:
 	void setPassword(string);
 	void setIdentificationNumber(int);
 	void addSaleProduct(Product*);
+	void addPurchaseProduct(Product*);
 	void getSaleProduct();
-	StatsDetails* getSalePrductStats();
+	void getPurchaseProduct();
+	ProductDetail* getSalePrductStats();
 };
 
 class ClientList {
@@ -97,7 +106,7 @@ public:
 	string loginClient(string, string);
 	void deleteClient(string);
 	Client* getClientDetail(string);
-	StatsDetails* getSaleProuductStats(string);
+	ProductDetail* getSaleProuductStats(string);
 };
 
 
@@ -186,5 +195,20 @@ public:
 
 class InquireSaleStatsUI {
 public:
-	void printOutput(StatsDetails*);
+	void printOutput(ProductDetail*);
+};
+
+class BuyProduct {
+public:
+	BuyProduct();
+	string buyProduct(ProductList*, ClientList*, string, string);
+};
+
+class BuyProductUI {
+private:
+	string sellerId;
+	string productName;
+public:
+	void clickPurchaseButton(BuyProduct*);
+	void printOutput();
 };

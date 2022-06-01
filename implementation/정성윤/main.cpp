@@ -22,6 +22,7 @@ ofstream fout;
 ClientList clientList;
 ProductList productList;
 string currentLoginClient = "None";
+string searchProductName = "hat";
 
 /*********************회원가입************************/
 //회원가입 boundary class : inputInfo()
@@ -146,7 +147,7 @@ void RegisterNewSaleUI::printOutput(){
 
 /*********************판매통계 조회하기************************/
 //판매통계 조회하기 boundary class : printOutput()
-void InquireSaleStatsUI::printOutput(StatsDetails* statsDetails) {
+void InquireSaleStatsUI::printOutput(ProductDetail* statsDetails) {
     printf("2. printOutput\n\n");
 
     fout << "5.1. 판매 상품 통계" << endl;
@@ -157,6 +158,24 @@ void InquireSaleStatsUI::printOutput(StatsDetails* statsDetails) {
         if (total == 0) break;
         fout << '>' << ' ' << productName << ' ' <<  total << ' ' << average << endl;
     }
+}
+
+/*********************상품 구매하기************************/
+//판매통계 조회하기 boundary class : printOutput()
+void BuyProductUI::clickPurchaseButton(BuyProduct* buyProduct) {
+    printf("2. clickPurchaseButton\n");
+
+    // 2.1. buyProduct
+    string sellerId = buyProduct->buyProduct(&productList, &clientList, currentLoginClient, searchProductName);
+    this->sellerId = sellerId;
+    this->productName = searchProductName;
+}
+
+void BuyProductUI::printOutput() {
+    printf("3. printOutput\n\n");
+
+    fout << "4.2. 상품 구매" << endl;
+    fout << '>' << ' ' << sellerId << ' ' << productName << endl;
 }
 
 int main()
@@ -245,10 +264,11 @@ void doTask()
                 fout << "4.1. 상품 정보 검색" << endl;
                 break;
             }
-            case 2:
+            case 2: {
                 printf("구매하기\n");
-                fout << "4.2. 상품 구매" << endl;
+                BuyProduct buyProduct;
                 break;
+            }
             case 3:
                 printf("구매내역조회하기\n");
                 fout << "4.3. 상품 구매 내역 조회" << endl;

@@ -56,7 +56,7 @@ Client* ClientList::getClientDetail(string id) {
     }
 }
 
-StatsDetails* ClientList::getSaleProuductStats(string sellerId) {
+ProductDetail* ClientList::getSaleProuductStats(string sellerId) {
     printf("1.1. getSaleProuductStats\n");
 
     for (int i = 0; i < this->clientNumber; i++) {

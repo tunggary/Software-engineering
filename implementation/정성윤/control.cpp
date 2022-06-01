@@ -145,7 +145,7 @@ InquireSaleStats::InquireSaleStats(ClientList* clientList, string sellerId) {
 
     // 1. getSaleProductStats
     printf("1. InquireSaleStats\n");
-    StatsDetails* statsDetails = clientList->getSaleProuductStats(sellerId);
+    ProductDetail* statsDetails = clientList->getSaleProuductStats(sellerId);
 
     // 2. printOutput()
     InquireSaleStatsUI inquireSaleStatsUI;
@@ -153,4 +153,38 @@ InquireSaleStats::InquireSaleStats(ClientList* clientList, string sellerId) {
 
     delete[] statsDetails;
 
+}
+
+/*********************상품 구매하기************************/
+BuyProduct::BuyProduct() {
+    // 1. startInterface
+    printf("1. BuyProduct\n");
+    BuyProductUI buyProductUI;
+
+    // 2. clickPurchaseButton
+    buyProductUI.clickPurchaseButton(this);
+
+    // 3. printOutput
+    buyProductUI.printOutput();
+}
+string BuyProduct::buyProduct(ProductList* productList, ClientList* clientList, string currentLiginClient, string productName) {
+    printf("2.1. buyProduct\n");
+
+    // 2.1.1. getProductDetail
+    Product* product = productList->getProductDetail(productName);
+
+    int remaining = product->getRemaining();
+    int saleing = product->getSaleing();
+    string sellerId = product->getSellerId();
+    product->setRemaining(remaining - 1);
+    product->setSaleing(saleing + 1);
+
+    // 2.1.2. getClientDetail
+    Client* client = clientList->getClientDetail(currentLiginClient);
+
+
+    // 2.1.3 addPurchaseProduct
+    client->addPurchaseProduct(product);
+
+    return sellerId;
 }

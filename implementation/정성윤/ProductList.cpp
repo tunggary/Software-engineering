@@ -19,7 +19,15 @@ void ProductList::createProduct(Product* product) {
 
 void ProductList::getProductList() {
     for (int i = 0; i < productListNumber; i++) {
-        cout << "전체 상품 목록 : " << productList[i]->getProductName() << endl;
+        cout << "전체 상품 목록 : " << productList[i]->getProductName() << ' ' << productList[i]->getSaleing() << endl;
     }
 }
 
+Product* ProductList::getProductDetail(string productName) {
+    for (int i = 0; i < productListNumber; i++) {
+        if (productList[i]->getProductName() == productName) {
+            return productList[i];
+
+       }
+    }
+}

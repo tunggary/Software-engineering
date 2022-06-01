@@ -10,16 +10,16 @@ void SaleCollection::addSaleProduct(Product* product) {
 void SaleCollection::getSaleProduct() {
 
     for (int i = 0; i < saleProductNumber; i++) {
-        cout << "구매한 목록 : " << saleProduct[i]->getProductName() << endl;
+        cout << "판매한 목록 : " << saleProduct[i]->getProductName() << endl;
     }
 }
 
-StatsDetails* SaleCollection::getSalePrductStats() {
+ProductDetail* SaleCollection::getSalePrductStats() {
     printf("1.1.1.1. getSaleProuductStats\n");
 
     saleProduct[0]->setSaleing(1);
 
-    StatsDetails* statsDetails = new StatsDetails[MAX_COUNT];
+    ProductDetail* statsDetails = new ProductDetail[MAX_COUNT];
     for (int i = 0; i < saleProductNumber; i++) {
         if (saleProduct[i]->getSaleing() > 0) {
             int price = saleProduct[i]->getPrice();
