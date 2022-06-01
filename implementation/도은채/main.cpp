@@ -1,4 +1,4 @@
-// Çì´õ ¼±¾ð
+// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <string>
@@ -7,16 +7,16 @@
 using namespace std;
 
 
-// »ó¼ö ¼±¾ð
+// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 #define MAX_STRING 32
 #define INPUT_FILE_NAME "input.txt"
 #define OUTPUT_FILE_NAME "output.txt"
 
-// ÇÔ¼ö ¼±¾ð
+// ï¿½Ô¼ï¿½ ï¿½ï¿½ï¿½ï¿½
 void doTask();
 void program_exit();
 
-// º¯¼ö ¼±¾ð
+// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 ifstream fin;
 ofstream fout;
 ClientList clientList;
@@ -24,17 +24,17 @@ ProductList productList;
 string currentLoginClient = "None";
 string searchProductName = "hat";
 
-/*********************È¸¿ø°¡ÀÔ************************/
-//È¸¿ø°¡ÀÔ boundary class : inputInfo()
+/*********************È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½************************/
+//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ boundary class : inputInfo()
 void SignupUI::inputInfo(Signup* signup) {
     printf("2. inputInfo\n");
     
-    //È¸¿ø°¡ÀÔ Á¤º¸¸¦ ÀÔ·Â¹ÞÀ½
+    //È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·Â¹ï¿½ï¿½ï¿½
     string name, id, password;
     int identificationNumber;
     fin >> name >> identificationNumber >> id >> password;
 
-    //Á¤º¸ÀúÀå
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     this->name = name;
     this->id = id;
     this->password = password;
@@ -45,24 +45,24 @@ void SignupUI::inputInfo(Signup* signup) {
 };
 
 
-//È¸¿ø°¡ÀÔ boundary class : printOutput()
+//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ boundary class : printOutput()
 void SignupUI::printOutput() {
     printf("3. printOutput\n\n");
 
-    fout << "1.1. È¸¿ø°¡ÀÔ" << endl;
-    fout << '>' << ' ' << name << ' ' << identificationNumber <<  ' ' << id << ' ' << password << endl << endl;
+    fout << "1.1. È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" << endl;
+    fout << '>' << ' ' << name << ' ' << identificationNumber <<  ' ' << id << ' ' << password << endl;
 };
 
-/*********************·Î±×ÀÎ************************/
-//·Î±×ÀÎ boundary class : inputInfo()
+/*********************ï¿½Î±ï¿½ï¿½ï¿½************************/
+//ï¿½Î±ï¿½ï¿½ï¿½ boundary class : inputInfo()
 void LoginUI::inputIdPassword(Login* login) {
     printf("2. inputIdPassword\n");
 
-    //·Î±×ÀÎ Á¤º¸¸¦ ÀÔ·Â¹ÞÀ½
+    //ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·Â¹ï¿½ï¿½ï¿½
     string id, password;
     fin >>  id >> password;
 
-    //Á¤º¸ ÀúÀå
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     this->id = id;
     this->password = password;
 
@@ -70,16 +70,16 @@ void LoginUI::inputIdPassword(Login* login) {
     currentLoginClient = login->loginClient(&clientList, id, password);
 };
 
-//·Î±×ÀÎ boundary class : printOutput()
+//ï¿½Î±ï¿½ï¿½ï¿½ boundary class : printOutput()
 void LoginUI::printOutput() {
     printf("3. printOutput\n\n");
 
-    fout << "2.1. ·Î±×ÀÎ" << endl;
-    fout << '>' << ' ' << id << ' ' << password << endl << endl;
+    fout << "2.1. ï¿½Î±ï¿½ï¿½ï¿½" << endl;
+    fout << '>' << ' ' << id << ' ' << password << endl;
 };
 
-/*********************·Î±×¾Æ¿ô************************/
-//·Î±×¾Æ¿ô boundary class : inputInfo()
+/*********************ï¿½Î±×¾Æ¿ï¿½************************/
+//ï¿½Î±×¾Æ¿ï¿½ boundary class : inputInfo()
 void LogoutUI::clickLogout(Logout* logout) {
     printf("2. clickLogout\n");
 
@@ -89,45 +89,45 @@ void LogoutUI::clickLogout(Logout* logout) {
     currentLoginClient = logout->logoutClient(currentLoginClient);
 };
 
-//·Î±×¾Æ¿ô boundary class : printOutput()
+//ï¿½Î±×¾Æ¿ï¿½ boundary class : printOutput()
 void LogoutUI::printOutput() {
     printf("3. printOutput\n\n");
 
-    fout << "2.2. ·Î±×¾Æ¿ô" << endl;
-    fout << '>' << ' ' << id << endl << endl;
+    fout << "2.2. ï¿½Î±×¾Æ¿ï¿½" << endl;
+    fout << '>' << ' ' << id  << endl;
 };
 
-/*********************Å»ÅðÇÏ±â************************/
-//Å»ÅðÇÏ±â boundary class : clickSecessoion()
+/*********************Å»ï¿½ï¿½ï¿½Ï±ï¿½************************/
+//Å»ï¿½ï¿½ï¿½Ï±ï¿½ boundary class : clickSecessoion()
 void SecessionUI::clickSecession(Secession* secession) {
     printf("2.1 clickSecession\n");
 
-    //Á¤º¸ÀúÀå
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     this->id = currentLoginClient;
 
     // 2.1.1 deleteClient
     currentLoginClient = secession->deleteClient(&clientList, currentLoginClient);
 }
 
-//Å»ÅðÇÏ±â boundary class : printOutput()
+//Å»ï¿½ï¿½ï¿½Ï±ï¿½ boundary class : printOutput()
 void SecessionUI::printOutput() {
     printf("3. printOutput\n\n");
 
-    fout << "1.2. È¸¿øÅ»Åð" << endl;
-    fout << '>' << ' ' << id << endl << endl;
+    fout << "1.2. È¸ï¿½ï¿½Å»ï¿½ï¿½" << endl;
+    fout << '>' << ' ' << id << endl;
 };
 
-/*********************ÆÇ¸Å»óÇ° µî·ÏÇÏ±â************************/
-//ÆÇ¸Å»óÇ° µî·ÏÇÏ±â boundary class : inputSaleProductInfo()
+/*********************ï¿½Ç¸Å»ï¿½Ç° ï¿½ï¿½ï¿½ï¿½Ï±ï¿½************************/
+//ï¿½Ç¸Å»ï¿½Ç° ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ boundary class : inputSaleProductInfo()
 void RegisterNewSaleUI::inputSaleProductInfo(RegisterNewSale* registerNewSale){
     printf("2. inputSaleProductInfo\n");
 
-    //ÆÇ¸Å»óÇ° Á¤º¸ ÀÔ·Â¹ÞÀ½
+    //ï¿½Ç¸Å»ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·Â¹ï¿½ï¿½ï¿½
     string productName, productCompanyName;
     int price, remaining;
     fin >> productName >> productCompanyName >> price >> remaining;
 
-    //Á¤º¸ÀúÀå
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     this->productName = productName;
     this->productCompanyName = productCompanyName;
     this->price = price;
@@ -137,31 +137,64 @@ void RegisterNewSaleUI::inputSaleProductInfo(RegisterNewSale* registerNewSale){
     registerNewSale->registerSaleProduct(&productList, &clientList, currentLoginClient, productName, productCompanyName, price, remaining);
 }
 
-//ÆÇ¸Å»óÇ° µî·ÏÇÏ±â boundary class : printOutput()
+//ï¿½Ç¸Å»ï¿½Ç° ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ boundary class : printOutput()
 void RegisterNewSaleUI::printOutput(){
     printf("3. printOutput\n\n");
 
-    fout << "3.1. ÆÇ¸Å ÀÇ·ù µî·Ï" << endl;
-    fout << '>' << ' ' << productName << ' ' << productCompanyName << ' ' << price << ' ' << remaining  << endl << endl;
+    fout << "3.1. ï¿½Ç¸ï¿½ ï¿½Ç·ï¿½ ï¿½ï¿½ï¿½" << endl;
+    fout << '>' << ' ' << productName << ' ' << productCompanyName << ' ' << price << ' ' << remaining  << endl;
 }
 
-/*********************ÆÇ¸ÅÅë°è Á¶È¸ÇÏ±â************************/
-//ÆÇ¸ÅÅë°è Á¶È¸ÇÏ±â boundary class : printOutput()
+/*********************íŒë§¤ìƒí’ˆ ì¡°íšŒí•˜ê¸° ë„ì€ì±„***********************/
+//boundary class : printOutPut
+void InquireSalesUI::printOutput(ProductDetail* saleDetails) {
+    printf("2. printOutput\n\n");
+
+    fout << "3.2. ë“±ë¡ ìƒí’ˆ ì¡°íšŒ" << endl;
+    for (int i = 0; i < MAX_COUNT; i++) {
+        string productName = saleDetails[i].productName;
+        string productCompanyName = saleDetails[i].productCompanyName;
+        int price = saleDetails[i].price;
+        int remaining = saleDetails[i].remaining;
+        if (price == 0) break;
+        fout << '>' << ' ' << productName << ' ' << productCompanyName << ' ' << price << ' ' << remaining << endl;
+    }
+}
+
+/*********************íŒë§¤ì™„ë£Œìƒí’ˆ ì¡°íšŒí•˜ê¸° ë„ì€ì±„************************/
+//boundary class : printOutPut
+void InquireSalesDoneUI::printOutput(ProductDetail* saleDoneDetails) {
+    printf("2. printOutput\n\n");
+
+    fout << "3.3. íŒë§¤ ì™„ë£Œ ìƒí’ˆ ì¡°íšŒ" << endl;
+    for (int i = 0; i < MAX_COUNT; i++) {
+        string productName = saleDoneDetails[i].productName;
+        string productCompanyName = saleDoneDetails[i].productCompanyName;
+        int price = saleDoneDetails[i].price;
+        int saleing = saleDoneDetails[i].saleing;
+        int average = saleDoneDetails[i].average;
+        if (price == 0) break;
+        fout << '>' << ' ' << productName << ' ' << productCompanyName << ' ' << price << ' ' << saleing << ' ' << average << endl;
+    }
+}
+
+/*********************ï¿½Ç¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ï¿½Ï±ï¿½************************/
+//ï¿½Ç¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ï¿½Ï±ï¿½ boundary class : printOutput()
 void InquireSaleStatsUI::printOutput(ProductDetail* statsDetails) {
     printf("2. printOutput\n\n");
 
-    fout << "5.1. ÆÇ¸Å »óÇ° Åë°è" << endl;
+    fout << "5.1. ï¿½Ç¸ï¿½ ï¿½ï¿½Ç° ï¿½ï¿½ï¿½" << endl;
     for (int i = 0; i < MAX_COUNT; i++) {
         string productName = statsDetails[i].productName;
         int total = statsDetails[i].total;
         float average = statsDetails[i].average;
         if (total == 0) break;
-        fout << '>' << ' ' << productName << ' ' <<  total << ' ' << average << endl << endl;
+        fout << '>' << ' ' << productName << ' ' <<  total << ' ' << average << endl;
     }
 }
 
-/*********************»óÇ° ±¸¸ÅÇÏ±â************************/
-//»óÇ° ±¸¸ÅÇÏ±â boundary class : clickPurchaseButton()
+/*********************ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½************************/
+//ï¿½Ç¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ï¿½Ï±ï¿½ boundary class : printOutput()
 void BuyProductUI::clickPurchaseButton(BuyProduct* buyProduct) {
     printf("2. clickPurchaseButton\n");
 
@@ -171,36 +204,16 @@ void BuyProductUI::clickPurchaseButton(BuyProduct* buyProduct) {
     this->productName = searchProductName;
 }
 
-//»óÇ° ±¸¸ÅÇÏ±â boundary class : printOutput()
 void BuyProductUI::printOutput() {
     printf("3. printOutput\n\n");
 
-    fout << "4.2. »óÇ° ±¸¸Å" << endl;
-    fout << '>' << ' ' << sellerId << ' ' << productName << endl << endl;
-}
-
-/*********************»óÇ°¸¸Á·µµ Æò°¡ÇÏ±â************************/
-//»óÇ°¸¸Á·µµ Æò°¡ÇÏ±â boundary class : inputEvaluaition()
-void EvaluateSatisfactionUI::inputEvaluation(EvaluateSatisfaction* evaluateSatisfaction) {
-    printf("2. inputEvaluation\n");
-
-    //Æò°¡Á¡¼ö ÀÔ·Â¹Þ±â
-    int evaluation;
-    fin >> evaluation;
-
-    evaluateSatisfaction->addEvaluation(&clientList, currentLoginClient, searchProductName, evaluation);
-}
-
-//»óÇ°¸¸Á·µµ Æò°¡ÇÏ±â boundary class : printOutput()
-void EvaluateSatisfactionUI::printOutput() {
-    printf("3. printOutput\n\n");
-
-    fout << "4.4. »óÇ° ±¸¸Å¸¸Á·µµ Æò°¡" << endl << endl;
+    fout << "4.2. ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½" << endl;
+    fout << '>' << ' ' << sellerId << ' ' << productName << endl;
 }
 
 int main()
 {
-    // ÆÄÀÏ ÀÔÃâ·ÂÀ» À§ÇÑ ÃÊ±âÈ­
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
     fin.open(INPUT_FILE_NAME);
     fout.open(OUTPUT_FILE_NAME);
 
@@ -211,27 +224,27 @@ int main()
 
 void doTask()
 {
-    // ¸Þ´º ÆÄ½ÌÀ» À§ÇÑ level ±¸ºÐÀ» À§ÇÑ º¯¼ö
+    // ï¿½Þ´ï¿½ ï¿½Ä½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ level ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     int menu_level_1 = 0, menu_level_2 = 0;
     int is_program_exit = 0;
 
     while (!fin.eof() || !is_program_exit)
     {
-        cout << "ÇöÀç ·Î±×ÀÎ À¯Àú : " << currentLoginClient << endl;
+        cout << "ï¿½ï¿½ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ : " << currentLoginClient << endl;
 
-        // ÀÔ·ÂÆÄÀÏ¿¡¼­ ¸Þ´º ¼ýÀÚ 2°³¸¦ ÀÐ±â
+        // ï¿½Ô·ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ ï¿½Þ´ï¿½ ï¿½ï¿½ï¿½ï¿½ 2ï¿½ï¿½ï¿½ï¿½ ï¿½Ð±ï¿½
         fin >> menu_level_1 >> menu_level_2;
 
         switch (menu_level_1) {
         case 1:
             switch (menu_level_2) {
             case 1: {
-                printf("È¸¿ø°¡ÀÔ\n");
+                printf("È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\n");
                 Signup signup;
                 break; 
             }
             case 2: {
-                printf("Å»ÅðÇÏ±â\n");
+                printf("Å»ï¿½ï¿½ï¿½Ï±ï¿½\n");
                 Secession secessoion;
                 break; 
             }
@@ -242,12 +255,12 @@ void doTask()
         case 2:
             switch (menu_level_2) {
             case 1: {
-                printf("·Î±×ÀÎ\n");
+                printf("ï¿½Î±ï¿½ï¿½ï¿½\n");
                 Login login;
                 break; 
             }
             case 2: {
-                printf("·Î±×¾Æ¿ô\n");
+                printf("ï¿½Î±×¾Æ¿ï¿½\n");
                 Logout logout;
                 break;
             }
@@ -258,18 +271,20 @@ void doTask()
         case 3:
             switch (menu_level_2) {
             case 1: {
-                printf("ÆÇ¸ÅÇÏ±â\n");
+                printf("ï¿½Ç¸ï¿½ï¿½Ï±ï¿½\n");
                 RegisterNewSale registerNewSale;
                 break;
             }
-            case 2:
-                printf("ÆÇ¸Å»óÇ°Á¶È¸\n");
-                fout << "3.2. µî·Ï »óÇ° Á¶È¸" << endl;
+            case 2: {
+                printf("ï¿½Ç¸Å»ï¿½Ç°ï¿½ï¿½È¸\n");
+                InquireSales inquireSales(&clientList, currentLoginClient);
                 break;
-            case 3:
-                printf("ÆÇ¸Å¿Ï·á»óÇ°Á¶È¸\n");
-                fout << "3.3. ÆÇ¸Å ¿Ï·á »óÇ° Á¶È¸" << endl;
+            }
+            case 3: {
+                printf("ï¿½Ç¸Å¿Ï·ï¿½ï¿½Ç°ï¿½ï¿½È¸\n");
+                InquireSalesDone inquireSalesDone(&clientList, currentLoginClient);
                 break;
+            }
             default:
                 break;
             }
@@ -277,27 +292,28 @@ void doTask()
         case 4:
             switch (menu_level_2) {
             case 1: {
-                printf("°Ë»öÇÏ±â\n");
+                printf("ï¿½Ë»ï¿½ï¿½Ï±ï¿½\n");
                 string productName;
                 fin >> productName;
 
-                fout << "4.1. »óÇ° Á¤º¸ °Ë»ö" << endl;
+                fout << "4.1. ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½" << endl;
                 break;
             }
             case 2: {
-                printf("±¸¸ÅÇÏ±â\n");
+                printf("ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½\n");
                 BuyProduct buyProduct;
                 break;
             }
             case 3:
-                printf("±¸¸Å³»¿ªÁ¶È¸ÇÏ±â\n");
-                fout << "4.3. »óÇ° ±¸¸Å ³»¿ª Á¶È¸" << endl;
+                printf("ï¿½ï¿½ï¿½Å³ï¿½ï¿½ï¿½ï¿½ï¿½È¸ï¿½Ï±ï¿½\n");
+                fout << "4.3. ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸" << endl;
                 break;
-            case 4: {
-                printf("¸¸Á·µµÆò°¡\n");
-                EvaluateSatisfaction evaluateSatisfaction;
+            case 4:
+                printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\n");
+                int evaluation;
+                fin >> evaluation;
+                fout << "4.4. ï¿½ï¿½Ç° ï¿½ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½" << endl;
                 break;
-            }
             default:
                 break;
             }
@@ -305,7 +321,7 @@ void doTask()
         case 5:
             switch (menu_level_2) {
             case 1: {
-                printf("ÆÇ¸ÅÅë°è\n");
+                printf("ï¿½Ç¸ï¿½ï¿½ï¿½ï¿½\n");
                 InquireSaleStats inquireSaleStats(&clientList, currentLoginClient);
                 break;
             }
@@ -316,7 +332,7 @@ void doTask()
         case 6:
             switch (menu_level_2) {
             case 1:
-                fout << "6.1. Á¾·á" << endl;
+                fout << "6.1. ï¿½ï¿½ï¿½ï¿½" << endl;
                 program_exit();
                 is_program_exit = 1;
                 break;

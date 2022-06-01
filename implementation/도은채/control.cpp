@@ -3,8 +3,8 @@
 #include "header.h"
 using namespace std;
 
-/*********************È¸¿ø°¡ÀÔ************************/
-//È¸¿ø°¡ÀÔ control class
+/*********************È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½************************/
+//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ control class
 Signup::Signup() {
     // 1. startInterface
     printf("1. SignupUl\n");
@@ -17,7 +17,7 @@ Signup::Signup() {
     signupUI.printOutput();
 };
 
-//È¸¿ø°¡ÀÔ control class : addNewClient()
+//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ control class : addNewClient()
 void Signup::addNewClient(ClientList* client, string name, string id, string password, int identificationNumber) {
     printf("2.1 addNewClient\n");
 
@@ -26,8 +26,8 @@ void Signup::addNewClient(ClientList* client, string name, string id, string pas
 };
 
 
-/*********************·Î±×ÀÎ************************/
-//·Î±×ÀÎ control class
+/*********************ï¿½Î±ï¿½ï¿½ï¿½************************/
+//ï¿½Î±ï¿½ï¿½ï¿½ control class
 Login::Login() {
 
     // 1. startInterface
@@ -41,7 +41,7 @@ Login::Login() {
     loginUI.printOutput();
 };
 
-//·Î±×ÀÎ control class : loginClient()
+//ï¿½Î±ï¿½ï¿½ï¿½ control class : loginClient()
 string Login::loginClient(ClientList* client, string id, string password) {
     printf("2.1 loginClient\n");
     
@@ -52,8 +52,8 @@ string Login::loginClient(ClientList* client, string id, string password) {
 }
 
 
-/*********************·Î±×¾Æ¿ô************************/
-//·Î±×¾Æ¿ô control class
+/*********************ï¿½Î±×¾Æ¿ï¿½************************/
+//ï¿½Î±×¾Æ¿ï¿½ control class
 Logout::Logout() {
     
     // 1. startInterface
@@ -67,15 +67,15 @@ Logout::Logout() {
     logoutUI.printOutput();
 }
 
-//·Î±×¾Æ¿ô control class : logoutClient()
+//ï¿½Î±×¾Æ¿ï¿½ control class : logoutClient()
 string Logout::logoutClient(string id) {
     printf("2.1 logoutClient\n");
 
     return "None";
 }
 
-/*********************Å»ÅðÇÏ±â************************/
-//Å»ÅðÇÏ±â control class
+/*********************Å»ï¿½ï¿½ï¿½Ï±ï¿½************************/
+//Å»ï¿½ï¿½ï¿½Ï±ï¿½ control class
 Secession::Secession() {
     
     // 1. startInterface
@@ -89,7 +89,7 @@ Secession::Secession() {
     secessionUI.printOutput();
 };
 
-//Å»ÅðÇÏ±â control class : deleteClient()
+//Å»ï¿½ï¿½ï¿½Ï±ï¿½ control class : deleteClient()
 string Secession::deleteClient(ClientList* client, string id) {
     printf("2.1.1 deleteClient\n");
 
@@ -100,9 +100,9 @@ string Secession::deleteClient(ClientList* client, string id) {
 }
 
 
-/*********************ÆÇ¸Å»óÇ°µî·ÏÇÏ±â************************/
+/*********************ï¿½Ç¸Å»ï¿½Ç°ï¿½ï¿½ï¿½ï¿½Ï±ï¿½************************/
 
-//ÆÇ¸Å»óÇ°µî·ÏÇÏ±â control class
+//ï¿½Ç¸Å»ï¿½Ç°ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ control class
 RegisterNewSale::RegisterNewSale() {
     
     // 1. startInterface
@@ -116,14 +116,14 @@ RegisterNewSale::RegisterNewSale() {
     registerNewSaleUI.printOutput();
 }
 
- //ÆÇ¸Å»óÇ°µî·ÏÇÏ±â control class : registerSaleProduct()
+ //ï¿½Ç¸Å»ï¿½Ç°ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ control class : registerSaleProduct()
 void RegisterNewSale::registerSaleProduct(ProductList* productList, ClientList* clientList, string sellerId, string productName, string productCompanyName, int price, int remaining) {
     printf("2.1 registerSaleProduct\n");
 
     // 2.1.1 getClientDetail
     Client* client = clientList->getClientDetail(sellerId);
 
-    //»õ·Î¿î Product »ý¼º
+    //ï¿½ï¿½ï¿½Î¿ï¿½ Product ï¿½ï¿½ï¿½ï¿½
     Product* product = new Product();
     product->setSellerId(sellerId);
     product->setProductName(productName);
@@ -139,9 +139,35 @@ void RegisterNewSale::registerSaleProduct(ProductList* productList, ClientList* 
     client->addSaleProduct(product);
 }
 
+//ë„ì€ì±„ íŒë§¤ìƒí’ˆì¡°íšŒ
+InquireSales::InquireSales(ClientList* clientList, string sellerId) {
 
-/*********************ÆÇ¸ÅÅë°èÁ¶È¸ÇÏ±â************************/
-//ÆÇ¸ÅÅë°è Á¶È¸ÇÏ±â control class : InquireSaleStats
+    printf("1. InquireSales\n");
+    ProductDetail* saleDetails = clientList->getSaleProducts(sellerId);
+
+    InquireSalesUI inquireSalesUI;
+    inquireSalesUI.printOutput(saleDetails);
+
+    delete[] saleDetails;
+
+}
+
+//ë„ì€ì±„ íŒë§¤ì™„ë£Œìƒí’ˆì¡°íšŒ
+InquireSalesDone::InquireSalesDone(ClientList* clientList, string sellerId) {
+    
+    printf("1. InquireSalesDone\n");
+    ProductDetail* saleDoneDetails = clientList->getSaleDoneProducts(sellerId);
+
+    InquireSalesDoneUI inquireSalesDoneUI;
+    inquireSalesDoneUI.printOutput(saleDoneDetails);
+
+    delete[] saleDoneDetails;
+}
+
+
+
+
+/*********************ï¿½Ç¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¸ï¿½Ï±ï¿½************************/
 InquireSaleStats::InquireSaleStats(ClientList* clientList, string sellerId) {
 
     // 1. getSaleProductStats
@@ -156,8 +182,7 @@ InquireSaleStats::InquireSaleStats(ClientList* clientList, string sellerId) {
 
 }
 
-/*********************»óÇ° ±¸¸ÅÇÏ±â************************/
-//»óÇ° ±¸¸ÅÇÏ±â control class
+/*********************ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½************************/
 BuyProduct::BuyProduct() {
     // 1. startInterface
     printf("1. BuyProduct\n");
@@ -169,9 +194,7 @@ BuyProduct::BuyProduct() {
     // 3. printOutput
     buyProductUI.printOutput();
 }
-
-//»óÇ° ±¸¸ÅÇÏ±â control class : buyProduct
-string BuyProduct::buyProduct(ProductList* productList, ClientList* clientList, string currentLoginClient, string productName) {
+string BuyProduct::buyProduct(ProductList* productList, ClientList* clientList, string currentLiginClient, string productName) {
     printf("2.1. buyProduct\n");
 
     // 2.1.1. getProductDetail
@@ -184,35 +207,11 @@ string BuyProduct::buyProduct(ProductList* productList, ClientList* clientList, 
     product->setSaleing(saleing + 1);
 
     // 2.1.2. getClientDetail
-    Client* client = clientList->getClientDetail(currentLoginClient);
+    Client* client = clientList->getClientDetail(currentLiginClient);
 
 
     // 2.1.3 addPurchaseProduct
     client->addPurchaseProduct(product);
 
     return sellerId;
-}
-
-/*********************»óÇ°¸¸Á·µµÆò°¡ÇÏ±â************************/
-EvaluateSatisfaction::EvaluateSatisfaction() {
-
-    // 1. startInterface
-    printf("1. EvaluationSatisfactionUI\n");
-    EvaluateSatisfactionUI evaluateSatisfactionUI;
-
-    // 2. inputEvaluation
-    evaluateSatisfactionUI.inputEvaluation(this);
-
-    // 3. printOutput
-    evaluateSatisfactionUI.printOutput();
-};
-
-void EvaluateSatisfaction::addEvaluation(ClientList* clientList, string currentLoginClient, string productName, int evaluation) {
-    printf("2.1. addEvaluation\n");
-
-    // 2.1.1. getClientDetail
-    Client* client = clientList->getClientDetail(currentLoginClient);
-
-    // 2.1.2 setEvaluation
-    client->setEvaluation(productName, evaluation);    
 }

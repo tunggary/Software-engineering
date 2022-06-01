@@ -24,6 +24,23 @@ void Client::addSaleProduct(Product* product) {
     this->saleCollection.addSaleProduct(product);
 };
 
+//도은채 시작
+ProductDetail* Client::getSaleProductList() {
+    printf("1.1.1. getSaleProductList\n");
+
+    //1.1.1.1. getSaleProductDetails
+    return this->saleCollection.getSaleProductDetails();
+}
+
+ProductDetail* Client::getSaleDoneProductList() {
+    printf("1.1.1. getSaleDoneProductList\n");
+
+    //1.1.1.1. getSaleDoneProductDetails
+    return this->saleCollection.getSaleDoneProductDetails();
+}
+
+//도은채 끝
+
 ProductDetail* Client::getSalePrductStats() {
     printf("1.1.1. getSaleProuductStats\n");
     
@@ -37,10 +54,3 @@ void Client::addPurchaseProduct(Product* product) {
     // addPurchseProduct
     this->purchaseCollection.addPurchaseProduct(product);
 };
-
-void Client::setEvaluation(string productName, int evalution) {
-    printf("2.1.2. setEvaluation\n");
-
-    // 2.1.2.1. setEvaluation
-    purchaseCollection.setEvaluation(productName, evalution);
-}

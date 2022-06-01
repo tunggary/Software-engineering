@@ -19,7 +19,7 @@ void ProductList::createProduct(Product* product) {
 
 void ProductList::getProductList() {
     for (int i = 0; i < productListNumber; i++) {
-        cout << "ÀüÃ¼ »óÇ° ¸ñ·Ï : " << productList[i]->getProductName() << ' ' << productList[i]->getEvaluationAvg() << endl;
+        cout << "ï¿½ï¿½Ã¼ ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ : " << productList[i]->getProductName() << ' ' << productList[i]->getSaleing() << endl;
     }
 }
 

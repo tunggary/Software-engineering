@@ -23,7 +23,6 @@ private:
 	int price;
 	int remaining;
 	int saleing;
-	int evaluationSum;
 	float evaluationAvg;
 public:
 	Product();
@@ -33,7 +32,6 @@ public:
 	int getPrice();
 	int getRemaining();
 	int getSaleing();
-	int getEvaluationSum();
 	float getEvaluationAvg();
 	void setSellerId(string);
 	void setProductName(string);
@@ -41,8 +39,6 @@ public:
 	void setPrice(int);
 	void setRemaining(int);
 	void setSaleing(int);
-	void setEvaluationSum(int);
-	void setEvaluationAvg(float);
 };
 
 class ProductList {
@@ -63,7 +59,6 @@ private:
 	Product* purchaseProduct[MAX_COUNT];
 public:
 	void addPurchaseProduct(Product*);
-	void setEvaluation(string, int);
 	void getPurchaseProduct();
 };
 
@@ -74,6 +69,10 @@ private:
 public:
 	void addSaleProduct(Product*);
 	void getSaleProduct();
+	//도은채 판매상품조회
+	ProductDetail* getSaleProductDetails();
+	//도은채 판매완료상푸무조회
+	ProductDetail* getSaleDoneProductDetails();
 	ProductDetail* getSalePrductStats();
 };
 
@@ -97,9 +96,12 @@ public:
 	void setIdentificationNumber(int);
 	void addSaleProduct(Product*);
 	void addPurchaseProduct(Product*);
-	void setEvaluation(string, int);
 	void getSaleProduct();
 	void getPurchaseProduct();
+	//도은채 판매상품조회
+	ProductDetail* getSaleProductList();
+	//도은채 판매완료상품조회
+	ProductDetail* getSaleDoneProductList();
 	ProductDetail* getSalePrductStats();
 };
 
@@ -112,6 +114,10 @@ public:
 	string loginClient(string, string);
 	void deleteClient(string);
 	Client* getClientDetail(string);
+	//도은채 판매상품조회
+	ProductDetail* getSaleProducts(string);
+	//도은채 판매완료상품조회
+	ProductDetail* getSaleDoneProducts(string);
 	ProductDetail* getSaleProuductStats(string);
 };
 
@@ -194,6 +200,28 @@ public:
 
 };
 
+//도은채 시작
+class InquireSales {
+public:
+	InquireSales(ClientList*, string);
+};
+
+class InquireSalesUI {
+public:
+	void printOutput(ProductDetail*);
+};
+
+class InquireSalesDone {
+public:
+	InquireSalesDone(ClientList*, string);
+};
+
+class InquireSalesDoneUI {
+public:
+	void printOutput(ProductDetail*);
+};
+//도은채 끝
+
 class InquireSaleStats {
 public:
 	InquireSaleStats(ClientList*, string);
@@ -217,19 +245,4 @@ private:
 public:
 	void clickPurchaseButton(BuyProduct*);
 	void printOutput();
-};
-
-
-class EvaluateSatisfaction {
-public:
-	EvaluateSatisfaction();
-	void addEvaluation(ClientList*, string, string, int);
-};
-
-
-class EvaluateSatisfactionUI {
-public:
-	void inputEvaluation(EvaluateSatisfaction*);
-	void printOutput();
-
 };
