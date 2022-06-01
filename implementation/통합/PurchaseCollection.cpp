@@ -1,4 +1,4 @@
-#include "header.h"
+ï»¿#include "header.h"
 
 void PurchaseCollection::addPurchaseProduct(Product* product) {
     printf("2.1.3.1 addPurchaseProduct\n");
@@ -9,11 +9,11 @@ void PurchaseCollection::addPurchaseProduct(Product* product) {
 void PurchaseCollection::getPurchaseProduct() {
 
     for (int i = 0; i < purchaseProductNumber; i++) {
-        cout << "±¸¸ÅÇÑ ¸ñ·Ï : " << purchaseProduct[i]->getProductName() << ' ' << purchaseProduct[i]->getEvaluationAvg()  << endl;
+        cout << "êµ¬ë§¤í•œ ëª©ë¡ : " << purchaseProduct[i]->getProductName() << ' ' << purchaseProduct[i]->getEvaluationAvg()  << endl;
     }
 }
 
-void PurchaseCollection::setEvaluation(string productName, int evaluation) {
+string PurchaseCollection::setEvaluation(string productName, int evaluation) {
     printf("2.1.2.1. setEvaluation\n");
 
     for (int i = 0; i < purchaseProductNumber; i++) {
@@ -22,13 +22,33 @@ void PurchaseCollection::setEvaluation(string productName, int evaluation) {
 
             int saleing = purchaseProduct[i]->getSaleing();
             int evaluationSum = purchaseProduct[i]->getEvaluationSum();
+            string sellerId = purchaseProduct[i]->getSellerId();
             evaluationSum += evaluation;
             float evaluationAvg = (float)evaluationSum / saleing;
 
             // 2.1.2.1.1. setEvaluation
             purchaseProduct[i]->setEvaluationSum(evaluationSum);
             purchaseProduct[i]->setEvaluationAvg(evaluationAvg);
-            break;
+
+            return sellerId;
         }
     }
+}
+
+//ë‚˜ì˜ˆë¦¼ ì¶”ê°€
+ProductDetail* PurchaseCollection::getPurchaseProductDetails() {
+    printf("1.1.1.1. getSaleProductDetails\n");
+
+
+    ProductDetail* purchaseDetails = new ProductDetail[MAX_COUNT];
+    for (int i = 0; i < purchaseProductNumber; i++) {
+        purchaseDetails[i].sellerId = purchaseProduct[i]->getSellerId();
+        purchaseDetails[i].productName = purchaseProduct[i]->getProductName();
+        purchaseDetails[i].productCompanyName = purchaseProduct[i]->getProductCompanyName();
+        purchaseDetails[i].price = purchaseProduct[i]->getPrice();
+        purchaseDetails[i].remaining = purchaseProduct[i]->getRemaining();
+        purchaseDetails[i].average = purchaseProduct[i]->getEvaluationAvg();
+        cout << purchaseDetails[i].sellerId << " " << purchaseDetails[i].productName << endl;
+    }
+    return purchaseDetails;
 }

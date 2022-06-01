@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <iostream>
 #define MAX_COUNT 100
 
@@ -53,8 +53,10 @@ public:
 	ProductList();
 	~ProductList();
 	void createProduct(Product*);
-	void getProductList();
 	Product* getProductDetail(string);
+	//나예림 상품검색하기 추가
+	ProductDetail* getProductList(string);
+	//나예림 상품검색하기 추가
 };
 
 class PurchaseCollection {
@@ -63,8 +65,11 @@ private:
 	Product* purchaseProduct[MAX_COUNT];
 public:
 	void addPurchaseProduct(Product*);
-	void setEvaluation(string, int);
+	string setEvaluation(string, int);
 	void getPurchaseProduct();
+	//나예림 구매상품조회 추가
+	ProductDetail* getPurchaseProductDetails();
+	//나예림 구매상품조회 추가
 };
 
 class SaleCollection {
@@ -75,9 +80,9 @@ public:
 	void addSaleProduct(Product*);
 	void getSaleProduct();
 	ProductDetail* getSalePrductStats();
-	//����ä �ǸŻ�ǰ��ȸ
+	//도은채 판매상품조회
 	ProductDetail* getSaleProductDetails();
-	//����ä �ǸſϷ��Ǫ����ȸ
+	//도은채 판매완료상푸무조회
 	ProductDetail* getSaleDoneProductDetails();
 };
 
@@ -101,14 +106,17 @@ public:
 	void setIdentificationNumber(int);
 	void addSaleProduct(Product*);
 	void addPurchaseProduct(Product*);
-	void setEvaluation(string, int);
 	void getSaleProduct();
 	void getPurchaseProduct();
-	//����ä �ǸŻ�ǰ��ȸ
+	string setEvaluation(string, int);
+	//도은채 판매상품조회
 	ProductDetail* getSaleProductList();
-	//����ä �ǸſϷ��ǰ��ȸ
+	//도은채 판매완료상품조회
 	ProductDetail* getSaleDoneProductList();
 	ProductDetail* getSalePrductStats();
+	//나예림 구매상품조회 추가
+	ProductDetail* getPurchaseProductList();
+	//나예림 구매상품조회 추가
 };
 
 class ClientList {
@@ -121,10 +129,14 @@ public:
 	void deleteClient(string);
 	Client* getClientDetail(string);
 	ProductDetail* getSaleProuductStats(string);
-	//����ä �ǸŻ�ǰ��ȸ
+	//도은채 판매상품조회
 	ProductDetail* getSaleProducts(string);
-	//����ä �ǸſϷ��ǰ��ȸ
+	//도은채 판매완료상품조회
 	ProductDetail* getSaleDoneProducts(string);
+
+	//나예림 구매상품조회
+	ProductDetail* getPurchaseProduct(string);
+	//나예림 구매상품조회
 };
 
 
@@ -235,18 +247,22 @@ public:
 class EvaluateSatisfaction {
 public:
 	EvaluateSatisfaction();
-	void addEvaluation(ClientList*, string, string, int);
+	string addEvaluation(ClientList*, string, string, int);
 };
 
 
 class EvaluateSatisfactionUI {
+private:
+	string productName;
+	string sellerId;
+	int evaluation;
 public:
 	void inputEvaluation(EvaluateSatisfaction*);
 	void printOutput();
 
 };
 
-//����ä ����
+//도은채 시작
 class InquireSales {
 public:
 	InquireSales(ClientList*, string);
@@ -266,4 +282,34 @@ class InquireSalesDoneUI {
 public:
 	void printOutput(ProductDetail*);
 };
-//����ä ��
+//도은채 끝
+
+//나예림 추가
+
+//상품 검색하기
+class SearchProduct {
+private:
+	string productName;
+public:
+	SearchProduct();	//생성자
+	void showProductList(ProductList*, string);
+};
+
+class SearchProductUI {
+public:
+	void inputProductName(SearchProduct*);
+	void printOutput(ProductDetail*);
+};
+
+
+//상품구매내역 조회하기
+class InquirePurchase {
+public:
+	InquirePurchase(ClientList*, string);
+};
+
+class InquirePurchaseUI {
+public:
+	void printOutput(ProductDetail*);
+};
+//나예림 끝

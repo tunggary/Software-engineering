@@ -1,4 +1,4 @@
-#include "header.h"
+ï»¿#include "header.h"
 
 void SaleCollection::addSaleProduct(Product* product) {
     printf("2.1.3.1 addSaleProduct\n");
@@ -10,7 +10,7 @@ void SaleCollection::addSaleProduct(Product* product) {
 void SaleCollection::getSaleProduct() {
 
     for (int i = 0; i < saleProductNumber; i++) {
-        cout << "ÆÇ¸ÅÇÑ ¸ñ·Ï : " << saleProduct[i]->getProductName() << endl;
+        cout << "íŒë§¤í•œ ëª©ë¡ : " << saleProduct[i]->getProductName() << endl;
     }
 }
 
@@ -30,7 +30,7 @@ ProductDetail* SaleCollection::getSalePrductStats() {
     return statsDetails;
 }
 
-//µµÀºÃ¤ ÆÇ¸Å»óÇ°Á¶È¸
+//ë„ì€ì±„ íŒë§¤ìƒí’ˆì¡°íšŒ
 ProductDetail* SaleCollection::getSaleProductDetails() {
     printf("1.1.1.1. getSaleProductDetails\n");
 
@@ -45,7 +45,7 @@ ProductDetail* SaleCollection::getSaleProductDetails() {
     return saleDetails;
 }
 
-//µµÀºÃ¤ ÆÇ¸Å¿Ï·á»óÇ°Á¶È¸
+//ë„ì€ì±„ íŒë§¤ì™„ë£Œìƒí’ˆì¡°íšŒ
 ProductDetail* SaleCollection::getSaleDoneProductDetails() {
     printf("1.1.1.1. getSaleDoneProductDetails\n");
 

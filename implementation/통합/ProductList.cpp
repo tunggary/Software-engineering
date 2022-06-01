@@ -1,4 +1,4 @@
-#include "header.h"
+ï»¿#include "header.h"
 
 ProductList::ProductList() {
     this->productListNumber = 0;
@@ -17,10 +17,24 @@ void ProductList::createProduct(Product* product) {
     this->productListNumber += 1;
 }
 
-void ProductList::getProductList() {
-    for (int i = 0; i < productListNumber; i++) {
-        cout << "ÀüÃ¼ »óÇ° ¸ñ·Ï : " << productList[i]->getProductName() << ' ' << productList[i]->getRemaining() << ' '<< productList[i]->getSaleing()  << endl;
-    }
+//ë‚˜ì˜ˆë¦¼ ì¶”ê°€
+
+ProductDetail* ProductList::getProductList(string inputProductName) {
+    cout << "2.1.1. getProductList" << endl;
+
+    ProductDetail* allProductDetails = new ProductDetail;
+
+
+    Product* oneProductDetails = getProductDetail(inputProductName);
+
+    allProductDetails->sellerId = oneProductDetails->getSellerId();
+    allProductDetails->productName = oneProductDetails->getProductName();
+    allProductDetails->productCompanyName = oneProductDetails->getProductCompanyName();
+    allProductDetails->price = oneProductDetails->getPrice();
+    allProductDetails->remaining = oneProductDetails->getRemaining();
+    allProductDetails->average = oneProductDetails->getEvaluationAvg();
+
+    return allProductDetails;
 }
 
 Product* ProductList::getProductDetail(string productName) {

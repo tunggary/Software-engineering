@@ -1,4 +1,4 @@
-#include "header.h"
+﻿#include "header.h"
 
 string Client::getName() { return this->name; }
 string Client::getId() { return this->id; }
@@ -38,14 +38,15 @@ void Client::addPurchaseProduct(Product* product) {
     this->purchaseCollection.addPurchaseProduct(product);
 };
 
-void Client::setEvaluation(string productName, int evalution) {
+string Client::setEvaluation(string productName, int evalution) {
     printf("2.1.2. setEvaluation\n");
 
     // 2.1.2.1. setEvaluation
-    purchaseCollection.setEvaluation(productName, evalution);
+    string sellerId = purchaseCollection.setEvaluation(productName, evalution);
+    return sellerId;
 }
 
-//����ä ����
+//도은채 시작
 ProductDetail* Client::getSaleProductList() {
     printf("1.1.1. getSaleProductList\n");
 
@@ -60,4 +61,16 @@ ProductDetail* Client::getSaleDoneProductList() {
     return this->saleCollection.getSaleDoneProductDetails();
 }
 
-//����ä ��
+//도은채 끝
+
+
+//나예림 구매상품조회 추가
+ProductDetail* Client::getPurchaseProductList() {
+    printf("1.1.1 getPurchaseProductList\n");
+
+    //1.1.1.1. getPurchaseProductDetails
+    return this->purchaseCollection.getPurchaseProductDetails();
+
+    //1.1.1.1 get
+}
+//나예림 구매상품조회 추가

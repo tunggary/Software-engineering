@@ -1,13 +1,13 @@
-#include "header.h"
+ï»¿#include "header.h"
 
-// È¸¿ø°¡ÀÔ entity class : createClient()
+// íšŒì›ê°€ì… entity class : createClient()
 void ClientList::createClient(string name, string id, string password, int identificationNumber) {
     printf("2.1.1 createClient\n");
 
     Client* clientList = this->clientList;
     int clientNumber = this->clientNumber;
 
-    //»õ·Î¿î À¯ÀúÃß°¡
+    //ìƒˆë¡œìš´ ìœ ì €ì¶”ê°€
     clientList[clientNumber].setName(name);
     clientList[clientNumber].setId(id);
     clientList[clientNumber].setPassword(password);
@@ -15,11 +15,11 @@ void ClientList::createClient(string name, string id, string password, int ident
     this->clientNumber += 1;
 };
 
-// ·Î±×ÀÎ entity class : loginClient()
+// ë¡œê·¸ì¸ entity class : loginClient()
 string ClientList::loginClient(string id, string password) {
     printf("2.1.1 loginClient\n");
 
-    //id¿Í password°¡ ¸Â´Â À¯Àú Ã£±â
+    //idì™€ passwordê°€ ë§ëŠ” ìœ ì € ì°¾ê¸°
     Client* clientList = this->clientList;
     for (int i = 0; i < this->clientNumber; i++) {
         if (clientList[i].getId() == id && clientList[i].getPassword() == password) {
@@ -29,11 +29,11 @@ string ClientList::loginClient(string id, string password) {
     return "None";
 }
 
-// Å»ÅğÇÏ±â entity class : deleteClient()
+// íƒˆí‡´í•˜ê¸° entity class : deleteClient()
 void ClientList::deleteClient(string id) {
     printf("2.1.1.1 deleteClient\n");
 
-    //id°¡ ¸Â´Â À¯Àú Ã£¾Æ¼­ »èÁ¦
+    //idê°€ ë§ëŠ” ìœ ì € ì°¾ì•„ì„œ ì‚­ì œ
     Client* clientList = this->clientList;
     int clientNumber = this->clientNumber;
     int deleteClient = 0;
@@ -67,7 +67,7 @@ ProductDetail* ClientList::getSaleProuductStats(string sellerId) {
     }
 }
 
-//µµÀºÃ¤ ÆÇ¸Å»óÇ°Á¶È¸
+//ë„ì€ì±„ íŒë§¤ìƒí’ˆì¡°íšŒ
 ProductDetail* ClientList::getSaleProducts(string sellerId) {
     printf("1.1. getSaleProducts\n");
 
@@ -79,7 +79,7 @@ ProductDetail* ClientList::getSaleProducts(string sellerId) {
     }
 }
 
-//µµÀºÃ¤ ÆÇ¸Å¿Ï·á»óÇ°Á¶È¸
+//ë„ì€ì±„ íŒë§¤ì™„ë£Œìƒí’ˆì¡°íšŒ
 ProductDetail* ClientList::getSaleDoneProducts(string sellerId) {
     printf("1.1. getSaleDoneProducts\n");
 
@@ -90,3 +90,16 @@ ProductDetail* ClientList::getSaleDoneProducts(string sellerId) {
         }
     }
 }
+
+//ë‚˜ì˜ˆë¦¼ êµ¬ë§¤ìƒí’ˆì¡°íšŒ ì¶”ê°€
+ProductDetail* ClientList::getPurchaseProduct(string sellerId) {
+    printf("1.1. getPurchaseProducts\n");
+
+    for (int i = 0; i < this->clientNumber; i++) {
+        if (clientList[i].getId() == sellerId) {
+            //1.1.1 getSaleProductList
+            return clientList[i].getPurchaseProductList();
+        }
+    }
+}
+//êµ¬ë§¤ìƒí’ˆì¡°íšŒ ì¶”ê°€
