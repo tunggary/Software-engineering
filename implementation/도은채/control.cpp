@@ -3,8 +3,8 @@
 #include "header.h"
 using namespace std;
 
-/*********************ȸ������************************/
-//ȸ������ control class
+/*********************회원가입************************/
+//회원가입 control class
 Signup::Signup() {
     // 1. startInterface
     printf("1. SignupUl\n");
@@ -17,7 +17,7 @@ Signup::Signup() {
     signupUI.printOutput();
 };
 
-//ȸ������ control class : addNewClient()
+//회원가입 control class : addNewClient()
 void Signup::addNewClient(ClientList* client, string name, string id, string password, int identificationNumber) {
     printf("2.1 addNewClient\n");
 
@@ -26,8 +26,8 @@ void Signup::addNewClient(ClientList* client, string name, string id, string pas
 };
 
 
-/*********************�α���************************/
-//�α��� control class
+/*********************로그인************************/
+//로그인 control class
 Login::Login() {
 
     // 1. startInterface
@@ -41,7 +41,7 @@ Login::Login() {
     loginUI.printOutput();
 };
 
-//�α��� control class : loginClient()
+//로그인 control class : loginClient()
 string Login::loginClient(ClientList* client, string id, string password) {
     printf("2.1 loginClient\n");
     
@@ -52,8 +52,8 @@ string Login::loginClient(ClientList* client, string id, string password) {
 }
 
 
-/*********************�α׾ƿ�************************/
-//�α׾ƿ� control class
+/*********************로그아웃************************/
+//로그아웃 control class
 Logout::Logout() {
     
     // 1. startInterface
@@ -67,15 +67,16 @@ Logout::Logout() {
     logoutUI.printOutput();
 }
 
-//�α׾ƿ� control class : logoutClient()
+//로그아웃 control class : logoutClient(
 string Logout::logoutClient(string id) {
     printf("2.1 logoutClient\n");
 
     return "None";
 }
 
-/*********************Ż���ϱ�************************/
-//Ż���ϱ� control class
+
+/*********************탈퇴하기************************/
+//탈퇴하기 control class
 Secession::Secession() {
     
     // 1. startInterface
@@ -89,7 +90,7 @@ Secession::Secession() {
     secessionUI.printOutput();
 };
 
-//Ż���ϱ� control class : deleteClient()
+//탈퇴하기 control class : deleteClient()
 string Secession::deleteClient(ClientList* client, string id) {
     printf("2.1.1 deleteClient\n");
 
@@ -100,9 +101,9 @@ string Secession::deleteClient(ClientList* client, string id) {
 }
 
 
-/*********************�ǸŻ�ǰ����ϱ�************************/
+/*********************판매상품등록하기************************/
 
-//�ǸŻ�ǰ����ϱ� control class
+//판매상품등록하기 control class
 RegisterNewSale::RegisterNewSale() {
     
     // 1. startInterface
@@ -116,14 +117,15 @@ RegisterNewSale::RegisterNewSale() {
     registerNewSaleUI.printOutput();
 }
 
- //�ǸŻ�ǰ����ϱ� control class : registerSaleProduct()
+//판매상품등록하기 control class : registerSaleProduct()
 void RegisterNewSale::registerSaleProduct(ProductList* productList, ClientList* clientList, string sellerId, string productName, string productCompanyName, int price, int remaining) {
     printf("2.1 registerSaleProduct\n");
 
     // 2.1.1 getClientDetail
     Client* client = clientList->getClientDetail(sellerId);
 
-    //���ο� Product ����
+
+    //새로운 Product 생성
     Product* product = new Product();
     product->setSellerId(sellerId);
     product->setProductName(productName);
@@ -167,7 +169,7 @@ InquireSalesDone::InquireSalesDone(ClientList* clientList, string sellerId) {
 
 
 
-/*********************�Ǹ������ȸ�ϱ�************************/
+/*********************판매통계조회하기************************/
 InquireSaleStats::InquireSaleStats(ClientList* clientList, string sellerId) {
 
     // 1. getSaleProductStats
@@ -182,7 +184,7 @@ InquireSaleStats::InquireSaleStats(ClientList* clientList, string sellerId) {
 
 }
 
-/*********************��ǰ �����ϱ�************************/
+/*********************상품검색하기************************/
 BuyProduct::BuyProduct() {
     // 1. startInterface
     printf("1. BuyProduct\n");

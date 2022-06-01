@@ -1,4 +1,4 @@
-#include "header.h"
+﻿#include "header.h"
 
 string Client::getName() { return this->name; }
 string Client::getId() { return this->id; }
@@ -44,3 +44,33 @@ void Client::setEvaluation(string productName, int evalution) {
     // 2.1.2.1. setEvaluation
     purchaseCollection.setEvaluation(productName, evalution);
 }
+
+//도은채 시작
+ProductDetail* Client::getSaleProductList() {
+    printf("1.1.1. getSaleProductList\n");
+
+    //1.1.1.1. getSaleProductDetails
+    return this->saleCollection.getSaleProductDetails();
+}
+
+ProductDetail* Client::getSaleDoneProductList() {
+    printf("1.1.1. getSaleDoneProductList\n");
+
+    //1.1.1.1. getSaleDoneProductDetails
+    return this->saleCollection.getSaleDoneProductDetails();
+}
+
+//도은채 끝
+
+
+
+//나예림 구매상품조회 추가
+ProductDetail* Client::getPurchaseProductList() {
+    printf("1.1.1 getPurchaseProductList\n");
+
+    //1.1.1.1. getPurchaseProductDetails
+    return this->purchaseCollection.getPurchaseProductDetails();
+
+    //1.1.1.1 get
+}
+//나예림 구매상품조회 추가

@@ -1,13 +1,13 @@
 #include "header.h"
 
-// ȸ������ entity class : createClient()
+// 회원가입 entity class : createClient()
 void ClientList::createClient(string name, string id, string password, int identificationNumber) {
     printf("2.1.1 createClient\n");
 
     Client* clientList = this->clientList;
     int clientNumber = this->clientNumber;
 
-    //���ο� �����߰�
+    //새로운 유저추가
     clientList[clientNumber].setName(name);
     clientList[clientNumber].setId(id);
     clientList[clientNumber].setPassword(password);
@@ -15,11 +15,11 @@ void ClientList::createClient(string name, string id, string password, int ident
     this->clientNumber += 1;
 };
 
-// �α��� entity class : loginClient()
+// 로그인 entity class : loginClient()
 string ClientList::loginClient(string id, string password) {
     printf("2.1.1 loginClient\n");
 
-    //id�� password�� �´� ���� ã��
+    //id와 password가 맞는 유저 찾기
     Client* clientList = this->clientList;
     for (int i = 0; i < this->clientNumber; i++) {
         if (clientList[i].getId() == id && clientList[i].getPassword() == password) {
@@ -29,11 +29,11 @@ string ClientList::loginClient(string id, string password) {
     return "None";
 }
 
-// Ż���ϱ� entity class : deleteClient()
+// 탈퇴하기 entity class : deleteClient()
 void ClientList::deleteClient(string id) {
     printf("2.1.1.1 deleteClient\n");
 
-    //id�� �´� ���� ã�Ƽ� ����
+    //id가 맞는 유저 찾아서 삭제
     Client* clientList = this->clientList;
     int clientNumber = this->clientNumber;
     int deleteClient = 0;
