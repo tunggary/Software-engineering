@@ -37,3 +37,10 @@ void Client::addPurchaseProduct(Product* product) {
     // addPurchseProduct
     this->purchaseCollection.addPurchaseProduct(product);
 };
+
+void Client::setEvaluation(string productName, int evalution) {
+    printf("2.1.2. setEvaluation\n");
+
+    // 2.1.2.1. setEvaluation
+    purchaseCollection.setEvaluation(productName, evalution);
+}

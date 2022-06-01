@@ -23,6 +23,7 @@ private:
 	int price;
 	int remaining;
 	int saleing;
+	int evaluationSum;
 	float evaluationAvg;
 public:
 	Product();
@@ -32,6 +33,7 @@ public:
 	int getPrice();
 	int getRemaining();
 	int getSaleing();
+	int getEvaluationSum();
 	float getEvaluationAvg();
 	void setSellerId(string);
 	void setProductName(string);
@@ -39,6 +41,8 @@ public:
 	void setPrice(int);
 	void setRemaining(int);
 	void setSaleing(int);
+	void setEvaluationSum(int);
+	void setEvaluationAvg(float);
 };
 
 class ProductList {
@@ -59,6 +63,7 @@ private:
 	Product* purchaseProduct[MAX_COUNT];
 public:
 	void addPurchaseProduct(Product*);
+	void setEvaluation(string, int);
 	void getPurchaseProduct();
 };
 
@@ -92,6 +97,7 @@ public:
 	void setIdentificationNumber(int);
 	void addSaleProduct(Product*);
 	void addPurchaseProduct(Product*);
+	void setEvaluation(string, int);
 	void getSaleProduct();
 	void getPurchaseProduct();
 	ProductDetail* getSalePrductStats();
@@ -211,4 +217,19 @@ private:
 public:
 	void clickPurchaseButton(BuyProduct*);
 	void printOutput();
+};
+
+
+class EvaluateSatisfaction {
+public:
+	EvaluateSatisfaction();
+	void addEvaluation(ClientList*, string, string, int);
+};
+
+
+class EvaluateSatisfactionUI {
+public:
+	void inputEvaluation(EvaluateSatisfaction*);
+	void printOutput();
+
 };

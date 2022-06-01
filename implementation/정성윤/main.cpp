@@ -50,7 +50,7 @@ void SignupUI::printOutput() {
     printf("3. printOutput\n\n");
 
     fout << "1.1. 회원가입" << endl;
-    fout << '>' << ' ' << name << ' ' << identificationNumber <<  ' ' << id << ' ' << password << endl;
+    fout << '>' << ' ' << name << ' ' << identificationNumber <<  ' ' << id << ' ' << password << endl << endl;
 };
 
 /*********************로그인************************/
@@ -75,7 +75,7 @@ void LoginUI::printOutput() {
     printf("3. printOutput\n\n");
 
     fout << "2.1. 로그인" << endl;
-    fout << '>' << ' ' << id << ' ' << password << endl;
+    fout << '>' << ' ' << id << ' ' << password << endl << endl;
 };
 
 /*********************로그아웃************************/
@@ -94,7 +94,7 @@ void LogoutUI::printOutput() {
     printf("3. printOutput\n\n");
 
     fout << "2.2. 로그아웃" << endl;
-    fout << '>' << ' ' << id  << endl;
+    fout << '>' << ' ' << id << endl << endl;
 };
 
 /*********************탈퇴하기************************/
@@ -114,7 +114,7 @@ void SecessionUI::printOutput() {
     printf("3. printOutput\n\n");
 
     fout << "1.2. 회원탈퇴" << endl;
-    fout << '>' << ' ' << id << endl;
+    fout << '>' << ' ' << id << endl << endl;
 };
 
 /*********************판매상품 등록하기************************/
@@ -142,7 +142,7 @@ void RegisterNewSaleUI::printOutput(){
     printf("3. printOutput\n\n");
 
     fout << "3.1. 판매 의류 등록" << endl;
-    fout << '>' << ' ' << productName << ' ' << productCompanyName << ' ' << price << ' ' << remaining  << endl;
+    fout << '>' << ' ' << productName << ' ' << productCompanyName << ' ' << price << ' ' << remaining  << endl << endl;
 }
 
 /*********************판매통계 조회하기************************/
@@ -156,12 +156,12 @@ void InquireSaleStatsUI::printOutput(ProductDetail* statsDetails) {
         int total = statsDetails[i].total;
         float average = statsDetails[i].average;
         if (total == 0) break;
-        fout << '>' << ' ' << productName << ' ' <<  total << ' ' << average << endl;
+        fout << '>' << ' ' << productName << ' ' <<  total << ' ' << average << endl << endl;
     }
 }
 
 /*********************상품 구매하기************************/
-//판매통계 조회하기 boundary class : printOutput()
+//상품 구매하기 boundary class : clickPurchaseButton()
 void BuyProductUI::clickPurchaseButton(BuyProduct* buyProduct) {
     printf("2. clickPurchaseButton\n");
 
@@ -171,11 +171,31 @@ void BuyProductUI::clickPurchaseButton(BuyProduct* buyProduct) {
     this->productName = searchProductName;
 }
 
+//상품 구매하기 boundary class : printOutput()
 void BuyProductUI::printOutput() {
     printf("3. printOutput\n\n");
 
     fout << "4.2. 상품 구매" << endl;
-    fout << '>' << ' ' << sellerId << ' ' << productName << endl;
+    fout << '>' << ' ' << sellerId << ' ' << productName << endl << endl;
+}
+
+/*********************상품만족도 평가하기************************/
+//상품만족도 평가하기 boundary class : inputEvaluaition()
+void EvaluateSatisfactionUI::inputEvaluation(EvaluateSatisfaction* evaluateSatisfaction) {
+    printf("2. inputEvaluation\n");
+
+    //평가점수 입력받기
+    int evaluation;
+    fin >> evaluation;
+
+    evaluateSatisfaction->addEvaluation(&clientList, currentLoginClient, searchProductName, evaluation);
+}
+
+//상품만족도 평가하기 boundary class : printOutput()
+void EvaluateSatisfactionUI::printOutput() {
+    printf("3. printOutput\n\n");
+
+    fout << "4.4. 상품 구매만족도 평가" << endl << endl;
 }
 
 int main()
@@ -273,12 +293,11 @@ void doTask()
                 printf("구매내역조회하기\n");
                 fout << "4.3. 상품 구매 내역 조회" << endl;
                 break;
-            case 4:
+            case 4: {
                 printf("만족도평가\n");
-                int evaluation;
-                fin >> evaluation;
-                fout << "4.4. 상품 구매만족도 평가" << endl;
+                EvaluateSatisfaction evaluateSatisfaction;
                 break;
+            }
             default:
                 break;
             }

@@ -141,6 +141,7 @@ void RegisterNewSale::registerSaleProduct(ProductList* productList, ClientList* 
 
 
 /*********************판매통계조회하기************************/
+//판매통계 조회하기 control class : InquireSaleStats
 InquireSaleStats::InquireSaleStats(ClientList* clientList, string sellerId) {
 
     // 1. getSaleProductStats
@@ -156,6 +157,7 @@ InquireSaleStats::InquireSaleStats(ClientList* clientList, string sellerId) {
 }
 
 /*********************상품 구매하기************************/
+//상품 구매하기 control class
 BuyProduct::BuyProduct() {
     // 1. startInterface
     printf("1. BuyProduct\n");
@@ -167,7 +169,9 @@ BuyProduct::BuyProduct() {
     // 3. printOutput
     buyProductUI.printOutput();
 }
-string BuyProduct::buyProduct(ProductList* productList, ClientList* clientList, string currentLiginClient, string productName) {
+
+//상품 구매하기 control class : buyProduct
+string BuyProduct::buyProduct(ProductList* productList, ClientList* clientList, string currentLoginClient, string productName) {
     printf("2.1. buyProduct\n");
 
     // 2.1.1. getProductDetail
@@ -180,11 +184,35 @@ string BuyProduct::buyProduct(ProductList* productList, ClientList* clientList, 
     product->setSaleing(saleing + 1);
 
     // 2.1.2. getClientDetail
-    Client* client = clientList->getClientDetail(currentLiginClient);
+    Client* client = clientList->getClientDetail(currentLoginClient);
 
 
     // 2.1.3 addPurchaseProduct
     client->addPurchaseProduct(product);
 
     return sellerId;
+}
+
+/*********************상품만족도평가하기************************/
+EvaluateSatisfaction::EvaluateSatisfaction() {
+
+    // 1. startInterface
+    printf("1. EvaluationSatisfactionUI\n");
+    EvaluateSatisfactionUI evaluateSatisfactionUI;
+
+    // 2. inputEvaluation
+    evaluateSatisfactionUI.inputEvaluation(this);
+
+    // 3. printOutput
+    evaluateSatisfactionUI.printOutput();
+};
+
+void EvaluateSatisfaction::addEvaluation(ClientList* clientList, string currentLoginClient, string productName, int evaluation) {
+    printf("2.1. addEvaluation\n");
+
+    // 2.1.1. getClientDetail
+    Client* client = clientList->getClientDetail(currentLoginClient);
+
+    // 2.1.2 setEvaluation
+    client->setEvaluation(productName, evaluation);    
 }
